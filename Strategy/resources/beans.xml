@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:lang="http://www.springframework.org/schema/lang"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/lang
+        http://www.springframework.org/schema/lang/spring-lang-3.2.xsd">
+  
+  <bean id="rateCalculatorBcp"
+	class="unmsm.cyds.FixedRateCalculatorBcp">
+    <property name="rate" value="0.3" />
+    <property name="plazo" value="1" />
+    <property name="descuento" value="0.02" />
+  </bean>  
+  
+  <bean id="rateCalculatorBbva"
+	class="unmsm.cyds.FixedRateCalculatorBbva">
+    <property name="rate" value="0.4" />
+    <property name="plazo" value="1" />
+  </bean>  
+
+  <bean id="interestCalculator"
+	class="unmsm.cyds.InterestCalculatorContex">
+	 <property name="rateCalculator" ref="rateCalculatorBcp" />
+  </bean>
+  
+</beans>
